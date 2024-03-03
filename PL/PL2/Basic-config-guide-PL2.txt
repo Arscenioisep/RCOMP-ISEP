@@ -1,0 +1,51 @@
+LAB1. 
+
+------- Configurar VLANS --------------
+
+conf t 
+vlan 5
+vlan 6
+
+------- Configurar uma interface/porta como accesso/trunk ---------
+
+conf t 
+int <interfaceID>
+switchport mode access
+switchport access vlan <VLANID>
+
+
+int <interfaceID>
+switchport mode trunk
+switchport trunk allowed vlan <VLANS permitidas no trunk>
+
+------- Verificar configurações ----------
+
+sh run 
+sh vlan br 
+sh int trunk 
+sh int <interfaceID> switchport 
+
+
+Lab 6. 
+
+------- Configurar Interface de um Router -----
+
+conf t 
+int <interfaceID>
+no shut 
+ip address <IP da interface> <NETMASK>  <------- ip address 192.168.1.1 255.255.255.0 
+
+------- Configurar Rota estática --------
+
+conf t 
+ip route <SUBNET DE DESTINO> <NETMASK> <NEXTHOP> <---- ip route 10.0.0.0 255.0.0.0 192.168.1.253 
+
+------ Configurar Rota estática default --------
+
+conf t 
+ip route 0.0.0.0 0.0.0.0 192.168.1.253 
+
+------ Verificar tabela de routing ------
+
+show ip int brief 
+show ip route 
